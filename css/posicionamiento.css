@@ -1,10 +1,10 @@
 /* Specificity: (0, 0, 1) */
 body {
-    width: 69%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
-    margin-top: 5%;
+    margin-top: 0%;
     background-size: 100%;
     background-attachment: fixed;
     text-align: center;
@@ -12,8 +12,8 @@ body {
 
 /* Specificity: (0, 0, 1) */
 h1 {
-    text-align: center;
-    margin: 5%;
+    text-align: left;
+    margin: 3%;
 }
 
 /* Specificity: (0, 0, 1) */
@@ -51,16 +51,6 @@ header>nav>a>img {
     vertical-align: middle;
 }
 
-/* Specificity: (0, 1, 0) */
-.login {
-    position: fixed;
-    float: right;
-    width: 3%;
-    margin-right: 2%;
-    margin-left: 45%;
-    margin-top: 0px;
-}
-
 /* Specificity: (0, 0, 1) */
 footer {
     margin-top: 10%;
@@ -93,7 +83,7 @@ hr {
 
 /* Specificity: (0, 0, 1) */
 main {
-    width: 69%;
+    width: 100%;
     margin: auto;
 }
 
@@ -106,7 +96,7 @@ p > img {
 
 /* Specificity: (0, 0, 2) */
 main > img {
-    width: 100%;
+    width: 20%;
     margin-right: 5%;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -204,4 +194,9 @@ input[type="button"] {
     margin-right: auto;
     margin-bottom: auto;
     margin-left: 20%;
+}
+
+body > img {
+    width: 40%;
+    margin-top: 5%;
 }
