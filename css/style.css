@@ -36,13 +36,14 @@ h4 {
 
 /* Specificity: (0, 0, 1) */
 p {
-    font-size: 100%;
-    color: #08192e;
+    font-size: 150%;
+    color: #ffffff;
+
 }
 
 nav {
     /*background-color: rgb(138, 138, 138);*/
-    width: 100%;
+    width: 95%;
     padding-left: 5%;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -69,7 +70,7 @@ nav > a > :visited{
 /* Specificity: (0, 0, 1) */
 footer {
     border-top: #ffffff 2px solid;
-    width: 101%;
+    width: 98%;
 }
 
 /* Specificity: (0, 0, 1) */
