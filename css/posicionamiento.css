@@ -134,6 +134,8 @@ body > img {
 }
 
 canvas {
-    display: inline;
+    margin-top: 5%;
+    background-color: white;
+    width: 70%;
 }
   
