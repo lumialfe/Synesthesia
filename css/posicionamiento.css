@@ -134,6 +134,6 @@ body > img {
 }
 
 canvas {
-    display: block;
+    display: inline;
 }
   
