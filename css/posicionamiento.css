@@ -132,3 +132,8 @@ body > img {
     width: 40%;
     margin-top: 5%;
 }
+
+canvas {
+    display: block;
+}
+  
