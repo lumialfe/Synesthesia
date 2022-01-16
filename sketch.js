@@ -6,11 +6,13 @@ var defVolume;
 let prevDuration, duration;
 
 var shapes = [];
+var init = 0;
 
 function setup() {
+  background("#222222");
   frameRate(120);
   colorMode(HSB);
-  let cnv = createCanvas(500, 500);
+  let cnv = createCanvas(windowWidth * 0.7, windowHeight * 0.7);
   cnv.mousePressed(userStartAudio);
   textAlign(LEFT);
   mic = new p5.AudioIn();
@@ -19,12 +21,14 @@ function setup() {
   fft.setInput(mic);
   defVolume = map(mic.getLevel(), 0, 1, 0, 100);
   duration = 0;
+  init = Date.now();
 }
 
 var shape;
 let created = false;
 
 function draw() {
+
   /*
    * shape es la variable por defecto que vamos a inicializar a un círculo y que
    * vamos a ir retocando según los parámetros de sonido, mientras se detecte
@@ -34,7 +38,7 @@ function draw() {
   var volume = map(mic.getLevel(), 0, 1, 0, 100) - defVolume;
 
   if (volume >= 2) {
-    background(0);
+    background("#222222");
 
     prevFrequency = computeFrequency();
     /*
@@ -59,8 +63,9 @@ function draw() {
     if (!created) {
       maxColor = 0;
       shape = new Circle();
-      shape.x = Math.floor(Math.random() * 501); //random de 0 a 500
-      shape.y = Math.floor(Math.random() * 501); //random de 0 a 500
+      shape.x = Math.floor(Math.random() * windowWidth*0.7 + 1); //random de 0 a 500
+      //shape.x = map(Date.now(), init, init + 30000, 0, windowWidth * 0.7);
+      shape.y = Math.floor(Math.random() * windowHeight * 0.7 + 1); //random de 0 a 500
       if (Math.random() < 0.5) {
         shape.spinDirection = -1;
       }
@@ -74,9 +79,10 @@ function draw() {
     prevDuration = Date.now();
     duration = 0;
 
-    for (let i = 0; i < shapes.length; i++) {
+    
+  }
+  for (let i = 0; i < shapes.length; i++) {
       shapes[i].show();
-    }
   }
 }
 
@@ -89,8 +95,7 @@ function decideColor(shape) {
   let val = map(mic.getLevel(), 0, 1, 80, 100);
   if (hue + sat + val > maxColor) {
     maxColor = hue + sat + val;
-      newshape.color = color(hue, sat, val);
-
+    newshape.color = color(hue, sat, val, 1);
   }
   return newshape;
 }
