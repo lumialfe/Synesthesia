@@ -65,6 +65,11 @@ function draw() {
   
 
   if (volume >= sensitivity) {
+
+    background("#222222");
+    for (let i = 0; i < shapes.length; i++) {
+      shapes[i].show();
+    }
     
 
     prevFrequency = computeFrequency();
@@ -111,11 +116,6 @@ function draw() {
 
     prevDuration = Date.now();
     duration = 0;
-
-    background("#222222");
-    for (let i = 0; i < shapes.length; i++) {
-      shapes[i].show();
-    }
   }
   
 }
