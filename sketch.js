@@ -22,10 +22,16 @@ function setup() {
   defVolume = map(mic.getLevel(), 0, 1, 0, 100);
   duration = 0;
   init = Date.now();
+  document.getElementById("download").onclick = download;
+
 }
 
 var shape;
 let created = false;
+
+function download() {
+  
+}
 
 function draw() {
 
