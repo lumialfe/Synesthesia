@@ -30,7 +30,10 @@ var shape;
 let created = false;
 
 function download() {
-  
+  var link = document.createElement('a');
+  link.download = 'Synesthesia.png';
+  link.href = document.getElementById('defaultCanvas0').toDataURL()
+  link.click();
 }
 
 function draw() {
