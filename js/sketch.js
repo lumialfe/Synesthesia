@@ -11,7 +11,7 @@ var init = 0;
 var canvas = document.getElementById("defaultCanvas0");
 
 //Variables de creación de gui
-var sensitivity = 0.5;
+var sensitivity = 1.5;
 var gui;
 
 function setup() {
