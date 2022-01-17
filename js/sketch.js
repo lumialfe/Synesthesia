@@ -10,6 +10,10 @@ var init = 0;
 
 var canvas = document.getElementById("defaultCanvas0");
 
+//Variables de creación de gui
+var sensitivity = 0.5;
+var gui;
+
 function setup() {
   background("#222222");
   frameRate(120);
@@ -25,6 +29,11 @@ function setup() {
   duration = 0;
   init = Date.now();
   document.getElementById("download").onclick = download;
+
+  //Aquí se crea la gui
+  gui = createGui();
+  sliderRange(0.5, 2, 0.1); //Valores de gui, de 0.5 a 1 con step de 0.1
+  gui.addGlobals("sensitivity");
 }
 
 var shape;
@@ -53,7 +62,7 @@ function draw() {
 
   var volume = map(mic.getLevel(), 0, 1, 0, 100) - defVolume;
 
-  if (volume >= 2) {
+  if (volume >= sensitivity) {
     background("#222222");
 
     prevFrequency = computeFrequency();
