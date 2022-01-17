@@ -129,7 +129,7 @@ function decideColor(shape) {
   let val = map(mic.getLevel(), 0, 1, 80, 100);
   if (hue + sat + val > maxColor) {
     maxColor = hue + sat + val;
-    newshape.color = color(hue, sat, val, 1);
+    newshape.color = color(hue, sat, val, 0.69);
   }
   return newshape;
 }
