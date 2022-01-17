@@ -83,6 +83,9 @@ function draw() {
     shape = mutateFigure(shape);
     shape = decideColor(shape);
 
+    for (let i = 0; i < shapes.length; i++) {
+      shapes[i].show();
+    }
     shape.show();
     created = true;
   } else {
