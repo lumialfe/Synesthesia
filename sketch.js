@@ -24,18 +24,17 @@ function setup() {
   defVolume = map(mic.getLevel(), 0, 1, 0, 100);
   duration = 0;
   init = Date.now();
-  canvas = document.getElementById("defaultCanvas0");
+  document.getElementById("download").onclick = download;
 }
 
 var shape;
 let created = false;
 
-download_img = function() {
-  var canvas = document.getElementById("defaultCanvas0");
-  var anchor = document.createElement("a");
-  anchor.href = canvas.toDataURL("image/png");
-  anchor.download = "IMAGE.PNG";
-  anchor.click();
+function download() {
+  var link = document.createElement('a');
+  link.download = 'Synesthesia.png';
+  link.href = document.getElementById('defaultCanvas0').toDataURL()
+  link.click();
 }
 
 
