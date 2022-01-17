@@ -62,12 +62,10 @@ function draw() {
 
   var volume = map(mic.getLevel(), 0, 1, 0, 100) - defVolume;
 
-  for (let i = 0; i < shapes.length; i++) {
-    shapes[i].show();
-  }
+  
 
   if (volume >= sensitivity) {
-    background("#222222");
+    
 
     prevFrequency = computeFrequency();
     /*
@@ -108,7 +106,10 @@ function draw() {
     prevDuration = Date.now();
     duration = 0;
 
-
+    background("#222222");
+    for (let i = 0; i < shapes.length; i++) {
+      shapes[i].show();
+    }
   }
   
 }
