@@ -8,6 +8,8 @@ let prevDuration, duration;
 var shapes = [];
 var init = 0;
 
+var canvas = document.getElementById("defaultCanvas0");
+
 function setup() {
   background("#222222");
   frameRate(120);
@@ -22,18 +24,20 @@ function setup() {
   defVolume = map(mic.getLevel(), 0, 1, 0, 100);
   duration = 0;
   init = Date.now();
-  document.getElementById("download").onclick = download;
+  canvas = document.getElementById("defaultCanvas0");
 }
 
 var shape;
 let created = false;
 
-function download() {
-  var link = document.createElement('a');
-  link.download = 'Synesthesia.png';
-  link.href = document.getElementById('defaultCanvas0').toDataURL()
-  link.click();
+download_img = function() {
+  var canvas = document.getElementById("defaultCanvas0");
+  var anchor = document.createElement("a");
+  anchor.href = canvas.toDataURL("image/png");
+  anchor.download = "IMAGE.PNG";
+  anchor.click();
 }
+
 
 function draw() {
 
