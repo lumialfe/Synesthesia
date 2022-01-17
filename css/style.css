@@ -126,7 +126,7 @@ span{
     border-radius: 5px;
   }
   span a:before{
-    color: #fff;
+    color: #222222;
     background: #FFC000;
     transform: rotateY(0deg) translateZ(25px);
   }

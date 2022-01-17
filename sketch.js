@@ -23,7 +23,6 @@ function setup() {
   duration = 0;
   init = Date.now();
   document.getElementById("download").onclick = download;
-
 }
 
 var shape;
