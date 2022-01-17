@@ -10,6 +10,10 @@ var init = 0;
 
 var canvas = document.getElementById("defaultCanvas0");
 
+//Variables de creación de gui
+var sensitivity = 0.5;
+var gui;
+
 function setup() {
   background("#222222");
   frameRate(120);
@@ -25,6 +29,11 @@ function setup() {
   duration = 0;
   init = Date.now();
   document.getElementById("download").onclick = download;
+
+  //Aquí se crea la gui
+  gui = createGui();
+  sliderRange(0.5, 2, 0.1); //Valores de gui, de 0.5 a 1 con step de 0.1
+  gui.addGlobals("sensitivity");
 }
 
 var shape;
@@ -53,7 +62,7 @@ function draw() {
 
   var volume = map(mic.getLevel(), 0, 1, 0, 100) - defVolume;
 
-  if (volume >= 2) {
+  if (volume >= sensitivity) {
     background("#222222");
 
     prevFrequency = computeFrequency();
@@ -119,18 +128,14 @@ function decideColor(shape) {
 function decideShape(shape) {
   if (shape instanceof Circle) {
     if (shape.size > 60) {
-      let prevSize = shape.size;
-      let prevX = shape.x;
-      let prevY = shape.y;
-      let prevColor = shape.color;
-      let prevDirection = shape.spinDirection;
-      shape = new Oval();
-      shape.x = prevX;
-      shape.y = prevY;
-      shape.color = prevColor;
-      shape.height = prevSize * 2;
-      shape.width = prevSize * 2;
-      shape.spinDirection = prevDirection;
+      shape = createOval(shape);
+      return shape;
+    } else {
+      return shape;
+    }
+  } else if (shape instanceof Oval) {
+    if(shape.readytriangle != undefined) {
+      shape = createTriangle(shape);
       return shape;
     } else {
       return shape;
@@ -156,30 +161,49 @@ function createCircle(shape) {
   newshape.color = shape.color;
   newshape.x = shape.x;
   newshape.y = shape.y;
+  newshape.spin = shape.spin;
   newshape.size = 1;
   return newshape;
 }
 
 function createOval(shape) {
-  let prevshape = createCircle(shape);
   let newshape = new Oval();
   newshape.blue = shape.blue;
   newshape.red = shape.red;
   newshape.green = shape.green;
-  newshape.color = prevshape.color;
-  newshape.x = prevshape.x;
-  newshape.y = prevshape.y;
-  newshape.width = prevshape.size * 2;
-  newshape.height = prevshape.size * 2;
+  newshape.color = shape.color;
+  newshape.x = shape.x;
+  newshape.y = shape.y;
+  newshape.width = shape.size * 2;
+  newshape.height = shape.size * 2;
+  newshape.spin = shape.spin
+  newshape.spinDirection = shape.spinDirection;
+
+  return newshape;
+}
+
+function createTriangle(shape) {
+  let newshape = new Triangle();
+  newshape.blue = shape.blue;
+  newshape.red = shape.red;
+  newshape.green = shape.green;
+  newshape.color = shape.color;
+  newshape.x = shape.x;
+  newshape.y = shape.y;
+  newshape.spin = shape.spin;
+  newshape.width = shape.width;
+  newshape.height = shape.height;
+  newshape.spinDirection = shape.spinDirection;
 
   return newshape;
 }
 
 function mutateFigure(shape) {
+  let widthIncrement = duration / 50000;
+
   if (shape instanceof Circle) {
-    shape.size = shape.size + duration / 100000;
+    shape.size = shape.size + widthIncrement;
   } else if (shape instanceof Oval) {
-    let widthIncrement = duration / 50000;
 
     shape.width = shape.width + widthIncrement;
     if (shape.height > 300) {
@@ -191,15 +215,22 @@ function mutateFigure(shape) {
 
       //shape = tilt(shape, computeFrequency())
     } else {
-      if (shape.height / shape.width < 0.001) {
-        //Es línea
-        rotationStart = Date.now();
-        //Rota y se ensancha
-        shape.height = shape.height + widthIncrement * 0.5;
-      } else {
-        shape.height = shape.height - 0.1 * widthIncrement;
+      if (shape.height < 0) { //Línea se encoge tanto que crece de forma negativa
+        if (shape.height < -0.005) {
+          //Es línea
+          shape.readytriangle = true;
+        }
       }
+
+      shape.height = shape.height - 0.1 * widthIncrement;
     }
+  } else if (shape instanceof Triangle) {
+    shape.width = shape.width - 0.05 * widthIncrement;
+
+    if (shape.height < 0.75 * height)
+      shape.height = shape.height + 0.01 * widthIncrement;
+    else 
+      shape.height = shape.height - 0.05 * widthIncrement;
   }
 
   shape = rotateShape(shape);
@@ -208,7 +239,7 @@ function mutateFigure(shape) {
 }
 
 function rotateShape(shape) {
-  shape.spin = (duration / 20000) * shape.spinDirection;
+  shape.spin = (duration / 15000) * shape.spinDirection;
   return shape;
 }
 
