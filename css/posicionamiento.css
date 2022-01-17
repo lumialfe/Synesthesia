@@ -105,29 +105,6 @@ main > img {
     margin-left: 0%;
 }
 
-/* Specificity: (0, 1, 1) */
-button {
-    margin-top: 5%;
-    margin-left: 5%;
-    width: 20%;
-    height: 50px;
-}
-
-/* Specificity: (1, 0, 0) */
-#input {
-    width: 80%;
-    text-align: center;
-}
-
-/* Specificity: (0, 1, 1) */
-input[type="button"] {
-    margin-top: 5%;
-    text-align: center;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: 20%;
-}
-
 body > img {
     width: 40%;
     margin-top: 5%;
