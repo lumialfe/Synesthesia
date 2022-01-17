@@ -112,7 +112,8 @@ body > img {
 
 canvas {
     margin-top: 1%;
-    background-color: white;
+    background-color: #222222;
+    border: 3px solid #4e4e4e;
     width: 70%;
     margin-bottom: 5%;
 }
