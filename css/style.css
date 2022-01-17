@@ -92,14 +92,15 @@ button {
     font-family: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 2%;
     margin-left: 5%;
+    margin-right: 5%;
     width: 10%;
-    height: 2%;
+    height: 50px;
     border-radius: 8px;
     border: none;
     outline: none;
     text-transform: uppercase;
     font-weight: bold;
-    float: left;
+    float: right;
 }
 
 button:hover {
