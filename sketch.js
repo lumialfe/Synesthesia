@@ -37,6 +37,11 @@ function download() {
   link.click();
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth * 0.7, windowHeight * 0.7);
+}
+
+
 
 function draw() {
 
@@ -74,7 +79,7 @@ function draw() {
     if (!created) {
       maxColor = 0;
       shape = new Circle();
-      shape.x = Math.floor(Math.random() * windowWidth*0.7 + 1); //random de 0 a 500
+      shape.x = Math.floor(Math.random() * windowWidth * 0.7 + 1); //random de 0 a 500
       //shape.x = map(Date.now(), init, init + 30000, 0, windowWidth * 0.7);
       shape.y = Math.floor(Math.random() * windowHeight * 0.7 + 1); //random de 0 a 500
       if (Math.random() < 0.5) {
@@ -90,10 +95,10 @@ function draw() {
     prevDuration = Date.now();
     duration = 0;
 
-    
+
   }
   for (let i = 0; i < shapes.length; i++) {
-      shapes[i].show();
+    shapes[i].show();
   }
 }
 
