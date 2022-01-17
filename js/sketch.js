@@ -91,6 +91,9 @@ function draw() {
   } else {
     //Cuando no hay señal de micrófono asignamos una nueva posición rnd
     if (!created) {
+      for (let i = 0; i < shapes.length; i++) {
+        shapes[i].show();
+      }
       maxColor = 0;
       shape = new Circle();
       shape.x = Math.floor(Math.random() * windowWidth * 0.7 + 1); //random de 0 a 500
