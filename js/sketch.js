@@ -234,7 +234,7 @@ function mutateFigure(shape) {
       shape.height = shape.height - 0.1 * widthIncrement;
     }
   } else if (shape instanceof Triangle) {
-    shape.width = shape.width - 1/duration * widthIncrement;
+    shape.width = shape.width - 50000/duration;
 
     if (shape.height < 0.75 * height)
       shape.height = shape.height + 0.01 * widthIncrement;
