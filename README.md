@@ -30,6 +30,13 @@ Una parte clave de [Synesthesia](https://lumialfe.github.io/Synesthesia/) son lo
 * Frecuencia y volumen: La combinación de estos dos valores de audio conseguirá diferentes composiciones de color HSB (Hue, Saturation, Brightness; Tonalidad, Saturación, Brillo en español)
 para las diferentes formas. La frecuencia alterará la _tonalidad_, mientras que el volumen alterará la _saturación_ y el _brillo_.
 
+## Aleatoriedad
+
+Algunas partes de [Synesthesia](https://lumialfe.github.io/Synesthesia/) utilizan valores aleatorios. Estos son:
+- La posición de generación de las figuras. Cuando se detecta audio, se escoge un valor aleatorio de X e Y donde la figura se va a generar.
+- La dirección de rotación de las figuras. Cuando se crea una figura, se determina aleatoriamente si va a girar en sentido horario o antihorario.
+
+
 ## Cómo se usa
 
 ### Inicio
